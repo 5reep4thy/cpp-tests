@@ -10,8 +10,7 @@
             "name": "Debug",
             "program": "${workspaceFolder}/main",
             "args": [],
-            "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Build Project"
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
