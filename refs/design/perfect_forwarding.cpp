@@ -2,6 +2,7 @@
 #include <utility> // for std::forward
 class MyClass {
   public:
+    int x;
     MyClass() {
         std::cout << "Default constructor\n";
     }
@@ -18,6 +19,7 @@ class MyClass {
 // A factory function without perfect forwarding (only for one argument for simplicity)
 template <typename T, typename Arg>
 T create_no_forwarding(Arg a) {
+    std::cout << "xxxx\n";
     return T(a);
 }
 // A factory function with perfect forwarding
@@ -29,6 +31,8 @@ int main() {
     std::cout << "Creating with no forwarding:\n";
     // We pass an rvalue (temporary) of MyClass to create_no_forwarding.
     // Inside the function, 'a' is an lvalue, so the copy constructor is called.
+    // For c++11, if we compile with -fno-elide-constructors, we get an idea of exactly how the
+    // objects are passed around
     MyClass obj1 = create_no_forwarding<MyClass>(MyClass{});
     exit(0);
     std::cout << "\nCreating with perfect forwarding:\n";
