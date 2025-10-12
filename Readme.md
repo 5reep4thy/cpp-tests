@@ -12,3 +12,9 @@ https://stackoverflow.com/questions/8526598/how-does-stdforward-work-especially-
 https://stackoverflow.com/questions/28828159/usage-of-stdforward-vs-stdmove
 https://stackoverflow.com/questions/1051379/is-there-a-difference-between-copy-initialization-and-direct-initialization
 https://en.cppreference.com/w/cpp/language/implicit_conversion.html
+
+
+##### Remember - My setup
+Compile using my clang
+
+`/Users/sreepathyjayanand/Documents/code/llvm-project/sj-clang/bin/clang++ -I/Users/sreepathyjayanand/Documents/code/llvm-project/sj-clang/sj-cxx/include/c++/v1 -L/Users/sreepathyjayanand/Documents/code/llvm-project/sj-clang/sj-cxx/lib -I/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/include/ -L/Library/Developer/CommandLineTools/SDKs/MacOSX15.5.sdk/usr/lib -v -arch arm64 -rpath /Users/sreepathyjayanand/Documents/code/llvm-project/sj-clang/sj-cxx/lib  main.cpp`
