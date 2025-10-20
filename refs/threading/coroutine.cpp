@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include <coroutine>
 
-// coroutines - functions that can suspend thenselves and can be resumed
+// coroutines - functions that can suspend themselves and can be resumed
 struct ReturnObject {
     struct promise_type {
         std::suspend_never initial_suspend() {
@@ -11,11 +11,14 @@ struct ReturnObject {
             return {};
         }
         ReturnObject get_return_object() {
-            return {};
+            return ReturnObject{std::coroutine_handle<promise_type>::from_promise(*this)};
         }
         void unhandled_exception() {
         }
     };
+    std::coroutine_handle<> handle;
+    ReturnObject(std::coroutine_handle<> _handle) : handle(_handle) {
+    }
 };
 ReturnObject foo() {
     std::cout << "xxxxx 1 xxxxx\n";
@@ -23,6 +26,7 @@ ReturnObject foo() {
     std::cout << "xxxxx 2 xxxxx\n";
 }
 int main() {
-    foo();
+    ReturnObject ret = foo();
+    ret.handle.resume();
     return 0;
 }
