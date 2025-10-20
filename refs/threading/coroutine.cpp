@@ -24,9 +24,15 @@ ReturnObject foo() {
     std::cout << "xxxxx 1 xxxxx\n";
     co_await std::suspend_always{};
     std::cout << "xxxxx 2 xxxxx\n";
+    co_await std::suspend_always{};
+    std::cout << "xxxxx 3 xxxxx\n";
 }
 int main() {
     ReturnObject ret = foo();
     ret.handle.resume();
+    std::cout << std::boolalpha << ret.handle.done();
+    std::cout << "\n";
+    ret.handle();
+    std::boolalpha(std::cout << ret.handle.done());
     return 0;
 }
